@@ -21,16 +21,21 @@ class App extends Component {
     return this.setState({ number: evt.target.value });
   };
 
-  handleAddContact = () => {
+  handleAddContact = (evt) => {
     console.log("click");
-
-    this.state.contacts.push({
-      key: shortid.generate(),
-      name: this.state.name,
-      number: this.state.number,
-    });
-
-    this.setState({ name: "" });
+    if (
+      this.state.contacts.find((contact) => {
+        return contact.name === this.state.name;
+      })
+    ) {
+      alert(`${this.state.name} is already in contacts`);
+    } else {
+      this.state.contacts.push({
+        key: shortid.generate(),
+        name: this.state.name,
+        number: this.state.number,
+      });
+    }
   };
 
   filterContacts = (evt) => {
