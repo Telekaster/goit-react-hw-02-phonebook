@@ -1,0 +1,9 @@
+.contacts {
+  display: block;
+  margin: auto;
+  text-align: center;
+}
+.contacts__list {
+  padding: 0px;
+  list-style: none;
+}
