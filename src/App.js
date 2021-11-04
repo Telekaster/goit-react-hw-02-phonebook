@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import InputContacts from "./components/inputContacts/InputContacts";
 import shortid from "shortid";
-import Contacts from "./components/contacts/Contacts";
+import styles from "./index.css";
+import ContactForm from "./components/ContactForm/ContactForm ";
+import Filter from "./components/Filter/Filter";
+import ContactList from "./components/ContactList/ContactList";
 
 class App extends Component {
   state = {
@@ -36,19 +38,24 @@ class App extends Component {
 
   render() {
     return (
-      <>
-        <InputContacts
+      <div className="container">
+        <h1>Phonebook</h1>
+        <ContactForm
           handleNameChange={this.handleNameChange}
           handleSaveContact={this.handleSaveContact}
           handlePhoneChange={this.handlePhoneChange}
         />
-        <Contacts
+
+        <h2>Contacts</h2>
+        <Filter filterContacts={this.filterContacts} />
+
+        <ContactList
           contacts={this.state.contacts}
           filterContacts={this.filterContacts}
           key={this.state.contacts.key}
           state={this.state}
         />
-      </>
+      </div>
     );
   }
 }
