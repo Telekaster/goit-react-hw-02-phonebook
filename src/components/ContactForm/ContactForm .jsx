@@ -17,7 +17,7 @@ function ContactForm({
         title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
         required
       />
-      <p>phone</p>
+      <p>Phone</p>
       <input type="tel" onChange={handlePhoneChange} />
 
       <button type="button" className="input__btn" onClick={handleAddContact}>

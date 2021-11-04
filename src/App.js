@@ -42,6 +42,25 @@ class App extends Component {
     return this.setState({ filter: evt.target.value });
   };
 
+  deleteContact = (evt) => {
+    console.log(evt.target.id);
+    console.log(
+      this.state.contacts.indexOf(
+        this.state.contacts.find((item) => {
+          return item.key === evt.target.id;
+        })
+      )
+    );
+    return this.state.contacts.splice(
+      this.state.contacts.indexOf(
+        this.state.contacts.find((item) => {
+          return item.key === evt.target.id;
+        })
+      ),
+      1
+    );
+  };
+
   render() {
     return (
       <div className="container">
@@ -59,6 +78,7 @@ class App extends Component {
           contacts={this.state.contacts}
           key={this.state.contacts.key}
           state={this.state}
+          deleteContact={this.deleteContact}
         />
       </div>
     );
