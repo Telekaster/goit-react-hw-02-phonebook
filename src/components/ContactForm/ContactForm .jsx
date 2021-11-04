@@ -3,8 +3,8 @@ import styles from "./ContactForm .css";
 
 function ContactForm({
   handleNameChange,
-  handleSaveContact,
   handlePhoneChange,
+  handleAddContact,
 }) {
   return (
     <div className="input__area">
@@ -20,7 +20,7 @@ function ContactForm({
       <p>phone</p>
       <input type="tel" onChange={handlePhoneChange} />
 
-      <button type="button" className="input__btn" onClick={handleSaveContact}>
+      <button type="button" className="input__btn" onClick={handleAddContact}>
         Add contact
       </button>
     </div>

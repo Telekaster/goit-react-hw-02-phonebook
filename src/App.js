@@ -21,15 +21,16 @@ class App extends Component {
     return this.setState({ number: evt.target.value });
   };
 
-  handleSaveContact = (evt) => {
-    const contactsArr = this.state.contacts;
-    contactsArr.push({
+  handleAddContact = () => {
+    console.log("click");
+
+    this.state.contacts.push({
       key: shortid.generate(),
       name: this.state.name,
       number: this.state.number,
     });
 
-    return this.setState({ contacts: contactsArr });
+    this.setState({ name: "" });
   };
 
   filterContacts = (evt) => {
@@ -42,8 +43,8 @@ class App extends Component {
         <h1>Phonebook</h1>
         <ContactForm
           handleNameChange={this.handleNameChange}
-          handleSaveContact={this.handleSaveContact}
           handlePhoneChange={this.handlePhoneChange}
+          handleAddContact={this.handleAddContact}
         />
 
         <h2>Contacts</h2>
@@ -51,7 +52,6 @@ class App extends Component {
 
         <ContactList
           contacts={this.state.contacts}
-          filterContacts={this.filterContacts}
           key={this.state.contacts.key}
           state={this.state}
         />

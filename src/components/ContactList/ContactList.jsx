@@ -1,8 +1,7 @@
 import React from "react";
 import styles from "./ContactList.css";
 
-function ContactList({ contacts, filterContacts, state }) {
-  console.log(state.filter.length);
+function ContactList({ contacts, state }) {
   return (
     <div className="contacts">
       <ul className="contacts__list">
