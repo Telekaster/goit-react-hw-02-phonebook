@@ -6,6 +6,7 @@ import Contacts from "./components/contacts/Contacts";
 class App extends Component {
   state = {
     contacts: [],
+    filter: "",
     name: "",
     number: "",
   };
@@ -21,12 +22,16 @@ class App extends Component {
   handleSaveContact = (evt) => {
     const contactsArr = this.state.contacts;
     contactsArr.push({
-      id: shortid.generate(),
+      key: shortid.generate(),
       name: this.state.name,
       number: this.state.number,
     });
 
     return this.setState({ contacts: contactsArr });
+  };
+
+  filterContacts = (evt) => {
+    return this.setState({ filter: evt.target.value });
   };
 
   render() {
@@ -37,7 +42,12 @@ class App extends Component {
           handleSaveContact={this.handleSaveContact}
           handlePhoneChange={this.handlePhoneChange}
         />
-        <Contacts contacts={this.state.contacts} />
+        <Contacts
+          contacts={this.state.contacts}
+          filterContacts={this.filterContacts}
+          key={this.state.contacts.key}
+          state={this.state}
+        />
       </>
     );
   }
