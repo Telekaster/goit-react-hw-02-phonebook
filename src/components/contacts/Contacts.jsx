@@ -8,7 +8,7 @@ function Contacts({ contacts }) {
 
       <ul className="contacts__list">
         {contacts.map((item) => {
-          return <li>{item.name}</li>;
+          return <li>{`${item.name}: ${item.number}`}</li>;
         })}
       </ul>
     </div>
