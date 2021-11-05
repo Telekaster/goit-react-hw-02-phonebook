@@ -22,7 +22,6 @@ class App extends Component {
   };
 
   handleAddContact = (evt) => {
-    console.log("click");
     if (
       this.state.contacts.find((contact) => {
         return contact.name === this.state.name;
@@ -30,11 +29,14 @@ class App extends Component {
     ) {
       alert(`${this.state.name} is already in contacts`);
     } else {
-      this.state.contacts.push({
+      const contactsArr = this.state.contacts;
+      const newContact = {
         key: shortid.generate(),
         name: this.state.name,
         number: this.state.number,
-      });
+      };
+
+      this.setState({ contacts: [...contactsArr, newContact] });
     }
   };
 
@@ -43,22 +45,14 @@ class App extends Component {
   };
 
   deleteContact = (evt) => {
-    console.log(evt.target.id);
-    console.log(
-      this.state.contacts.indexOf(
-        this.state.contacts.find((item) => {
-          return item.key === evt.target.id;
-        })
-      )
+    const contactsArr = this.state.contacts;
+    const id = evt.target.id;
+    const elementForRemove = this.state.contacts.find(
+      (item) => item.key === id
     );
-    return this.state.contacts.splice(
-      this.state.contacts.indexOf(
-        this.state.contacts.find((item) => {
-          return item.key === evt.target.id;
-        })
-      ),
-      1
-    );
+    const index = contactsArr.indexOf(elementForRemove);
+    contactsArr.splice(index, 1);
+    this.setState({ contacts: [...contactsArr] });
   };
 
   render() {
